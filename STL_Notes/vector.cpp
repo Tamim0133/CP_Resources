@@ -1,12 +1,32 @@
 /// In the name of ALLAH
 
+/*
+01 : Vector Declaration
+02 : push_back()
+03 : Print
+04 : clear()
+05 : resize()
+06 : clear()
+07 : Iterator
+08 : sort()
+09 : reverse()
+10 : pop_back(), back()
+11 : erase()
+12 : unique()
+13 : max_element, min_element
+*/
 #include <bits/stdc++.h>
 using namespace std;
 int main()
 {
-    // Vector Declaration
+    /*-----------------------------------------------
+                01 : Vector Declaration
+--------------------------------------------------*/
     vector<int> v;
 
+    /*-----------------------------------------------
+                   02 : push_back()
+   --------------------------------------------------*/
     // vector এর শেষে একটা এলিমেন্ট যোগ করা
     v.push_back(1);
     v.push_back(2);
@@ -17,7 +37,10 @@ int main()
     v[1] = 3;                                           // vector এর জেকোন position এ array এর মতো change করা যায় ।
     cout << v[0] << " " << v[1] << " " << v[2] << endl; /// 1 3 3
 
-    // সাইজ print করার জন্য
+    /*-----------------------------------------------
+                    03 : Print
+    --------------------------------------------------*/
+    // সাইজ print করার জন্য .size()
     cout << v.size() << endl; /// 3
     for (int i = 0; i < v.size(); i++)
         cout << v[i] << " "; /// 1 3 3
@@ -31,12 +54,18 @@ int main()
         cout << v1[i] << " "; /// 2 3 4
     cout << endl;
 
+    /*-----------------------------------------------
+                    04 : clear()
+    --------------------------------------------------*/
     // vector clear করার জন্য
     v.clear();
     cout << v.size() << endl;   /// 0
     cout << v.empty() << endl;  /// 1
     cout << v1.empty() << endl; /// 0
 
+    /*-----------------------------------------------
+                    05 : resize()
+       -------------------------------------------------*/
     // ভেক্টর কে রিসাইজ করে এবং বাকি এলিমান্ট গুলাকে জিরো দিয়ে  ইনিশিয়ালাইয করে ।
     v1.resize(5);
     cout << v1.size() << endl; /// 5
@@ -52,6 +81,9 @@ int main()
         cout << a[i] << " "; /// 0 0 0 0 0
     cout << endl;
 
+    /*-----------------------------------------------
+                    06 : clear()
+    --------------------------------------------------*/
     // ভেক্টর কপি
     a = v1;
 
@@ -59,14 +91,19 @@ int main()
         cout << u << " "; /// 2 3 4 0 0 for each loop (only for printing)
     cout << endl;
 
+    /*-----------------------------------------------
+                    07 : Iterator
+    --------------------------------------------------*/
     // Iterator (pointer concept )
     vector<int>::iterator it;
     for (it = a.begin(); it != a.end(); it++)
         cout << *it << " "; /// 2 3 4 0 0
     cout << endl;
 
+    /*-----------------------------------------------
+                    08 : sort()
+    --------------------------------------------------*/
     a = {3, 4, 5, 1, 2};
-
     sort(a.begin(), a.end()); /// O(n*log(n))
 
     for (auto u : a)
@@ -89,16 +126,25 @@ int main()
 
     a = {3, 4, 5, 1, 2};
 
-    reverse(a.begin(), a.end());
+    /*-----------------------------------------------
+                    09 : reverse()
+    --------------------------------------------------*/
+
+    reverse(a.begin(), a.end()); // Time Complexity : O(n)
 
     for (auto u : a)
         cout << u << " "; /// 2 1 5 4 3
     cout << endl;
-
+    /*-----------------------------------------------
+                        10 : pop_back(), back()
+        --------------------------------------------------*/
     cout << a.back() << endl; /// 3 (gives the last element )
     a.pop_back();             /// O(1) complexity.
     cout << a.back() << endl; /// 4
 
+    /*-----------------------------------------------
+                        11 : erase()
+        --------------------------------------------------*/
     a = {3, 4, 5, 1, 2};
     cout << *a.begin() << endl; /// 3 (a.begin() is basically pointing at the start index pointer and by dereferencing we get its value)
 
@@ -113,6 +159,9 @@ int main()
         cout << u << " "; /// 4 5 2
     cout << endl;
 
+    /*-----------------------------------------------
+                        12 : unique()
+        --------------------------------------------------*/
     // The confusing concept of Unique Function :
 
     a = {1, 1, 2, 2, 2, 3, 3};
@@ -129,7 +178,9 @@ int main()
     for (int i = 0; i < n; i++)
         cout << a[i] << " "; /// 1 2 3
     cout << endl;
-
+    /*-----------------------------------------------
+                        13 : max_element, min_element
+        --------------------------------------------------*/
     a = {2, 3, 1, 5};
     cout << max_element(a.begin(), a.end()) - a.begin() << endl; /// 3 (Position of Max_Element)
     cout << *max_element(a.begin(), a.end()) << endl;            /// 5 (value of max element)

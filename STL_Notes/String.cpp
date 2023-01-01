@@ -1,9 +1,32 @@
+/*
+01 : Declaration & Initialization
+02 : Checking is a string empty or not
+03 : String concatenation
+04 : Comparing two strings
+05 : String Reverse
+06 : String Sorting
+07 : Finding Unique
+08 : Finding Maximum , Minimum
+09 : getline()
+10 : Vector String
+11 : pop_back(), back()
+12 : Integer to String
+13 : Substring (find(), substr())
+14 : Erasing a character from a string
+15 :Take multiple lines of string as input
+16 : (Func) To lower case
+17 : (Func) is_Vowel()
+18 : (Func) is palindrome
+19 : Lexographically next permutation
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
 int main()
 {
-
+    /*--------------------------------------
+        01 : Declaration & Initialization
+    ------------------------------------*/
     /// Declare string
     string s;
 
@@ -26,8 +49,9 @@ int main()
     cout << s << endl;
 
     s = "asdfgg";
-
-    /// Checking is a string empty or not
+    /*---------------------------------------------------------
+        ///02 : Checking is a string empty or not
+    ---------------------------------------------------*/
     string s1;
     cout << s.empty() << endl;  /// 0
     cout << s1.empty() << endl; /// 1
@@ -46,8 +70,9 @@ int main()
 
     s = "abc";
     s1 = "def";
-
-    /// String concatenation
+    /*-----------------------------------------------
+           ///03 : String concatenation
+    -----------------------------------------*/
     string tmp = s + s1;
     cout << tmp << endl; /// abcdef
 
@@ -65,12 +90,18 @@ int main()
     s = "asd";
     tmp = s;
 
-    /// Comparing two strings
+    /*------------------------------------------------------
+        ///04 : Comparing two strings
+    ---------------------------------------------------*/
     if (tmp == s)
         cout << "Yes Match\n"; // O/P
     else
         "No Match\n";
+    // can also use (tmp < s) or (tmp > s ) to check their lexographical
 
+    /*--------------------------------------------------------
+                05 : String Reverse
+  --------------------------------------------------*/
     /// String reverse and checking is a string is palindrome or not
     s = "asddsa";
     tmp = s;
@@ -81,6 +112,10 @@ int main()
     else
         cout << "Not Palindrome" << endl;
 
+    /*----------------------------------------------------------
+                     06 : String Sorting
+    ---------------------------------------------*/
+
     /// String sorting in non-decreasing order
     s = "gfds";
     sort(s.begin(), s.end()); // Time CX : O(nlogn)
@@ -90,6 +125,10 @@ int main()
     sort(s.rbegin(), s.rend());
     cout << s << endl; /// sgfd
 
+    /*-------------------------------------------------------------------
+               07 : Finding Unique
+--------------------------------------------------------*/
+
     /// Getting all unique elements of a string. Be care full, string should be sorted.
     s = "aaadddsss";
     int n = unique(s.begin(), s.end()) - s.begin();
@@ -97,10 +136,18 @@ int main()
         cout << s[i]; /// ads
     cout << endl;
 
+    /*-------------------------------------------------------------------
+               08 : Finding Maximum , Minimum
+--------------------------------------------------------*/
+
     /// Getting maximum element of string
     cout << *max_element(s.begin(), s.end()) << endl; /// s
     /// Getting minimum element of string
     cout << *min_element(s.begin(), s.end()) << endl; /// a
+
+    /*-------------------------------------------------------------------
+               09 : getline()
+--------------------------------------------------------*/
 
     /// When we want to take input with space
     /// input : Muhammad Shahriar Alam
@@ -111,6 +158,10 @@ int main()
     s = c + s;
 
     cout << s << endl; /// Muhammad Shahriar Alam
+
+    /*-------------------------------------------------------------------
+               10 :  Vector String
+--------------------------------------------------------*/
 
     /// If we need to sort some string on lexicographical order :
 
@@ -141,6 +192,9 @@ int main()
 
     */
 
+    /*-------------------------------------------------------------------
+               11 : pop_back(), back()
+--------------------------------------------------------*/
     s = "asdf";
 
     s.pop_back();             /// removes last char of string
@@ -154,6 +208,10 @@ int main()
     cout << Sz << endl; /// Number of unique strings in vector v;
     for (int i = 0; i < Sz; i++)
         cout << v[i] << endl; /// Prints all unique strings in vector v
+
+    /*-------------------------------------------------------------------
+               12 : Integer to String
+--------------------------------------------------------*/
 
     /// Converting int to string
     int a = 123;
@@ -170,6 +228,10 @@ int main()
     a++;
     cout << a << endl; /// 124;
 
+    /*-------------------------------------------------------------------
+                13 : Substring (find(), substr())
+--------------------------------------------------------*/
+
     /// Deleting a substring from string
 
     s = "ShaKAKAhriar";
@@ -183,12 +245,6 @@ int main()
 
     copy(tmp.begin() + 6, tmp.begin() + 10, back_inserter(s)); /// copying "Alam substring to string s back.
     cout << s << endl;                                         /// Shahriar Alam
-
-    /// Erasing all occurrence of a specific char from string.
-
-    s = "aaassdddaaasdd";
-    s.erase(remove(s.begin(), s.end(), 'a'), s.end()); /// removes all 'a' from s
-    cout << s << endl;
 
     /// Checking is a string is substring of another string in O(n*m)
     s = "ashshasdakks";
@@ -220,8 +276,20 @@ int main()
 
     int t;
     cin >> t;
+    /*-------------------------------------------------------------------
+                14 : Erasing a character from a string
+--------------------------------------------------------*/
 
-    // Take multiple lines of string as input
+    /// Erasing all occurrence of a specific char from string.
+
+    s = "aaassdddaaasdd";
+    s.erase(remove(s.begin(), s.end(), 'a'), s.end()); /// removes all 'a' from s
+    cout << s << endl;
+
+    /*-------------------------------------------------------------------
+                15 :Take multiple lines of string as input
+--------------------------------------------------------*/
+
     // for (int tc = 1; tc <= t; tc++)
     // {
     //     string s;
@@ -232,8 +300,9 @@ int main()
     //     cout << "Case " << tc << " " << s << endl;
     // }
 
-    // To lower case
-
+    /*-------------------------------------------------------------------
+                16 : (Func) To lower case
+--------------------------------------------------------*/
     // string to_lower(string s)
     // {
     //     for (int i = 0; i < s.size(); i++)
@@ -244,8 +313,63 @@ int main()
     //     cout << s << endl;
     //     return s;
     // }
+    /*-------------------------------------------------------------------
+                17 : (Func) is_Vowel()
+--------------------------------------------------------*/
 
-    // Copy string
+    // Is Vowel Function
+    // bool isVowel(char c)
+    // {
+    //     return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+    // }
+
+    /*-------------------------------------------------------------------
+              18 : (Func) is palindrome
+--------------------------------------------------------*/
+    // Is a Number palindrome 146 = 1 + 4 + 6 = 11 == 11 (Palindrome)
+    string s;
+    cin >> s;
+
+    int digitSum = 0;
+
+    for (auto i : s)
+        digitSum += (i - '0');
+    // Getting the character difference
+    // If we do 'c' - 'a' then we will get 2 ; similarly for each character we can get their value by subtracting by 0
+
+    string str = to_string(digitSum);
+    string tmp = str;
+
+    reverse(tmp.begin(), tmp.end());
+
+    if (str == tmp)
+        cout << "Yes ! Plindrome\n ";
+    else
+        cout << "Not Palindrome\n";
+
+    /*-------------------------------------------------------------------
+              19 : Lexographically next permutation
+--------------------------------------------------------*/
+    string s = "abcd";
+
+    bool f1 = next_permutation(s.begin(), s.end());
+
+    cout << f1 << " " << s << "\n"; // 1 abdc
+
+    string s = "abc";
+    do
+    {
+        cout << s << "\n";
+    } while (next_permutation(s.begin(), s.end()));
+
+    /*
+    abc
+    acb
+    bac
+    bca
+    cab
+    cba
+    */
 
     return 0;
 }
