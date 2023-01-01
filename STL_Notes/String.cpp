@@ -232,5 +232,18 @@ int main()
     //     cout << "Case " << tc << " " << s << endl;
     // }
 
+    // To lower case
+
+    // string to_lower(string s)
+    // {
+    //     for (int i = 0; i < s.size(); i++)
+    //     {
+    //         if (s[i] <= 90 && s[i] >= 65)
+    //             s[i] += 32;
+    //     }
+    //     cout << s << endl;
+    //     return s;
+    // }
+
     return 0;
 }
