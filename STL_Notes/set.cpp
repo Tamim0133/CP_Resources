@@ -597,5 +597,56 @@ int main()
     //     }
     // };
 
+    /*----------------------------------------------------
+
+                    MULTI - SET
+
+    -------------------------------------------------*/
+
+    // Multi_ Set
+    /*
+    ইলিমেন্ট ইউনিক থাকে না ।
+    কিন্তু সরটেড থাকে ।
+    সব অপারেশন O(logn)
+    */
+    multiset<int> ms;
+
+    ms.insert(1);
+    ms.insert(2);
+    ms.insert(1);
+    ms.insert(2);
+    ms.insert(3);
+    ms.insert(4);
+    ms.insert(1);
+
+    cout << "Size : " << ms.size() << endl; // Size: 7
+
+    for (auto i : ms)
+        cout << i << " ";
+    cout << endl;
+    // 1 1 1  2 2 3 4
+
+    cout << "Count of 1 : " << ms.count(1) << endl;
+    // Count of 1 : 3
+
+    // ms.erase(1);
+
+    // cout << "Size : " << ms.size() << endl; // Size: 7
+
+    // for (auto i : ms)
+    //     cout << i << " ";
+    // cout << endl;
+    //  Size: 4
+    //  2 2 3 4
+
+    auto it = ms.find(1);
+    ms.erase(it);
+
+    for (auto i : ms)
+        cout << i << " ";
+    cout << endl;
+    // 1 1 2 2 3 4
+    // শুধু একটা ১ ডিলেট করবে ।
+
     return 0;
 }
