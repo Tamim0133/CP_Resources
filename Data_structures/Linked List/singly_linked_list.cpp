@@ -234,6 +234,18 @@ public:
         newnode->nxt = a->nxt;
         a->nxt = newnode;
     }
+    void BubbleSort()
+    {
+
+        for (node *i = head; i != NULL; i = i->nxt)
+        {
+            for (node *j = i->nxt; j != NULL; j = j->nxt)
+            {
+                if (i->data > j->data)
+                    swap(i->data, j->data);
+            }
+        }
+    }
 };
 
 int main()
