@@ -1,3 +1,27 @@
+/*
+
+LINKED LIST FUNCTIONS
+
+01 : Creating New Node with a Null Pointer
+02 : Insert at head
+03 : Insert at any Index
+04 : Print the linked list
+05 : Search First Index of a value
+06 : Search All Indices of a value
+07 : Get Size
+08 : Get Value at an Index
+09 : Delete at the beginning
+10 : Delete at any Index
+11 : Print Reverse Order
+12 : Swap First Two
+13 : Insert after a value
+14 : Bubble Sort on Linked List
+15 : Delete all Zeros
+16 : Get Odd Index Sum
+17 : LL has Duplicate Values ?
+
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -20,7 +44,9 @@ public:
         head = NULL;
         sz = 0;
     }
-
+    /*------------------------------------------------------------
+            01 : Creating New Node with a Null Pointer
+        ---------------------------------------------------------------*/
     node *CreateNewNode(int value)
     {
         node *newnode = new node;
@@ -28,6 +54,10 @@ public:
         newnode->nxt = NULL;
         return newnode;
     }
+
+    /*------------------------------------------------------------
+                02 : Insert at head
+       ---------------------------------------------------------------*/
 
     void InsertAtHead(int value)
     {
@@ -43,7 +73,9 @@ public:
         a->nxt = head;
         head = a;
     }
-
+    /*------------------------------------------------------------
+                03 : Insert at any Index
+   ---------------------------------------------------------------*/
     void InsertAtAnyIndex(int index, int value)
     {
 
@@ -73,6 +105,9 @@ public:
         a->nxt = newnode;
     }
 
+    /*------------------------------------------------------------
+                04 : Print the linked list
+   ---------------------------------------------------------------*/
     void Traverse()
     {
         node *a = head;
@@ -86,6 +121,9 @@ public:
         cout << endl;
     }
 
+    /*------------------------------------------------------------
+                05 : Search First Index of a value
+   ---------------------------------------------------------------*/
     int SearchDistinctValue(int value)
     {
         node *a = head;
@@ -101,7 +139,9 @@ public:
 
         return -1;
     }
-
+    /*------------------------------------------------------------
+                06 : Search All Indices of a value
+   ---------------------------------------------------------------*/
     void SearchAllvalue(int value)
     {
         node *a = head;
@@ -119,6 +159,9 @@ public:
         }
     }
 
+    /*------------------------------------------------------------
+                        07 : Get Size
+       ---------------------------------------------------------------*/
     int getSize()
     {
         return sz;
@@ -132,6 +175,9 @@ public:
         // return count;
     }
 
+    /*------------------------------------------------------------
+        08 : Get Value at an Index
+   ---------------------------------------------------------------*/
     int getValue(int index)
     {
         node *a = head;
@@ -153,6 +199,9 @@ public:
         }
     }
 
+    /*------------------------------------------------------------
+                09 : Delete at the beginning
+   ---------------------------------------------------------------*/
     void DeleteAtHead()
     {
         if (head == NULL)
@@ -165,6 +214,9 @@ public:
         delete a;
     }
 
+    /*------------------------------------------------------------
+                10 : Delete at any Index
+   ---------------------------------------------------------------*/
     void DeleteAtAnyIndex(int index)
     {
         if (index < 0 || index > sz - 1)
@@ -191,6 +243,9 @@ public:
         delete b;
     }
 
+    /*------------------------------------------------------------
+            11 : Print Reverse Order
+   ---------------------------------------------------------------*/
     void printReverse2(node *a)
     {
         if (a == NULL)
@@ -204,6 +259,10 @@ public:
         printReverse2(head);
         cout << endl;
     }
+
+    /*------------------------------------------------------------
+            12 : Swap First Two
+   ---------------------------------------------------------------*/
     void swapFirst()
     {
         node *a = head;
@@ -211,6 +270,10 @@ public:
 
         swap(a->data, b->data);
     }
+
+    /*------------------------------------------------------------
+                    13 : Insert after a value
+   ---------------------------------------------------------------*/
     void InsertAfterValue(int value, int data)
     {
 
@@ -234,6 +297,10 @@ public:
         newnode->nxt = a->nxt;
         a->nxt = newnode;
     }
+
+    /*------------------------------------------------------------
+            14 : Bubble Sort on Linked List
+   ---------------------------------------------------------------*/
     void BubbleSort()
     {
 
@@ -245,6 +312,75 @@ public:
                     swap(i->data, j->data);
             }
         }
+    }
+
+    /*------------------------------------------------------------
+                15 : Delete all Zeros
+   ---------------------------------------------------------------*/
+    void deleteAllZeroes()
+    {
+        node *cur = head;
+        node *pre = NULL;
+        node *next = NULL;
+
+        while (cur != NULL)
+        {
+            next = cur->nxt;
+            node *temp = cur;
+            if (cur->data == 0)
+            {
+                if (pre != NULL)
+                    pre->nxt = cur->nxt;
+
+                if (cur == head)
+                    head = cur->nxt;
+
+                delete cur;
+                sz--;
+            }
+            pre = temp;
+            cur = next;
+        }
+    }
+
+    /*------------------------------------------------------------
+                16 : Get Odd Index Sum
+   ---------------------------------------------------------------*/
+    int getOddIndexSum()
+    {
+        node *a = head;
+        int i = 0, sum = 0;
+        while (a != NULL)
+        {
+            if (i % 2 == 1)
+            {
+                sum += a->data;
+            }
+            a = a->nxt;
+            i++;
+        }
+        return sum;
+    }
+
+    /*------------------------------------------------------------
+            17 : LL has Duplicate Values ?
+   ---------------------------------------------------------------*/
+    bool hasDuplicate()
+    {
+        node *a = head;
+        map<int, int> m;
+        while (a != NULL) // Time Complexity of Nlogn
+        {
+            m[a->data]++;
+            a = a->nxt;
+        }
+
+        for (auto i : m)
+        {
+            if (i.second > 1)
+                return true;
+        }
+        return false;
     }
 };
 
@@ -261,7 +397,6 @@ int main()
     l.InsertAtHead(30);
     cout << l.getSize() << "\n";
     l.InsertAtHead(20);
-    l.InsertAtHead(30);
 
     cout << l.getValue(2) << "\n";
 
@@ -270,10 +405,18 @@ int main()
     l.printReverse();
     l.Traverse();
     l.swapFirst();
-    l.InsertAtAnyIndex(4, 200);
-    l.InsertAtAnyIndex(1, 200);
+    l.InsertAtAnyIndex(4, 0);
+    l.InsertAtAnyIndex(0, 0);
+    l.InsertAtAnyIndex(7, 0);
+    l.deleteAllZeroes();
     l.Traverse();
-    l.printReverse();
+    cout << l.getOddIndexSum() << endl;
+
+    if (l.hasDuplicate())
+        cout << "Has Duplicate" << endl;
+    else
+        cout << "No Duplicate" << endl;
+
     // l.DeleteAtHead();
     // l.Traverse();
     // l.DeleteAtAnyIndex(1);
