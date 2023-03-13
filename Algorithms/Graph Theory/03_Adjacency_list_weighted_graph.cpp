@@ -13,7 +13,7 @@ int main()
     {
         int u, v, w;
         cin >> u >> v >> w;
-        adjList[u].push_back({u, w});
+        adjList[u].push_back({v, w});
         adjList[v].push_back({u, w});
     }
 
