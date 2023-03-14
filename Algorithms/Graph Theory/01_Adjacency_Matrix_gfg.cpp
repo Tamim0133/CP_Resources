@@ -3,11 +3,9 @@ using namespace std;
 
 int main()
 {
-    // n is the number of vertices
-    // m is the number of edges
     int n, m;
     cin >> n >> m;
-    int adjMat[n + 1][n + 1] = {};
+    int adjMat[n + 1][n + 1] = {}; // এম্পটী ব্র্যকেট সবগুলা Matrix ভ্যাল্যু কে জিরো হিসেবে ইনিশিয়ালাইজ করে । O(n^2)
     for (int i = 0; i < m; i++)
     {
         int u, v;
