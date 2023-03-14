@@ -1,3 +1,23 @@
+
+// BFS (Level Order Traversal)
+
+/*
+/------------------------------------------------/
+
+- Initialize an array called "visited" and an empty array called "q"
+- Mark visited [source] = 1 and q.push(source)
+- While the queue is not empty
+    - head <- q.front()
+    - q.pop()
+    - print the node "head"
+    - for all node of "head"
+        - if visited [adj_node] == 0
+            - visited[adj_node] = 1
+            - q.push ( adj_node)
+
+
+/-------------------------------------------------/
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
