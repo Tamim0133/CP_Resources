@@ -16,8 +16,6 @@
     o/p:
         3
 
-
-
 */
 
 #include <bits/stdc++.h>
