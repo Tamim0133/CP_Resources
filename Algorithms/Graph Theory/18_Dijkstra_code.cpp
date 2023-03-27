@@ -1,3 +1,13 @@
+/*
+4 4
+1 2 3
+1 3 5
+2 4 7
+3 4 1
+
+0 3 5 6
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
