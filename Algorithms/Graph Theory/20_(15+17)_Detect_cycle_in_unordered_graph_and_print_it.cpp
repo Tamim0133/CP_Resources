@@ -126,3 +126,102 @@ int main()
 
     return 0;
 }
+
+/*
+#include <bits/stdc++.h>
+using namespace std;
+
+const int N = 1e5;
+
+vector<int> adj_list[N];
+
+int visited[N], parent[N];
+int st, ed;
+
+bool detect_cycle(int src)
+{
+    visited[src] = 1;
+
+    for (auto i : adj_list[src])
+    {
+        if (i == parent[src])
+            continue;
+        if (visited[i] == 0)
+        {
+            parent[i] = src;
+            bool ok = detect_cycle(i);
+            if (ok)
+            {
+                return true;
+            }
+        }
+        else if (visited[i] == 1)
+        {
+            st = src;
+            ed = i;
+            return true;
+        }
+    }
+    visited[src] = 2;
+    return false;
+}
+
+int main()
+{
+    int nodes, edges;
+    cin >> nodes >> edges;
+
+    while (edges--)
+    {
+        int u, v;
+        cin >> u >> v;
+        adj_list[u].push_back(v);
+        adj_list[v].push_back(u);
+    }
+
+    bool cycle = false;
+
+    for (int i = 1; i <= nodes; i++)
+    {
+        if (visited[i] == 0)
+        {
+            bool ok = detect_cycle(i);
+            if (ok)
+            {
+                cycle = true;
+                break;
+            }
+        }
+    }
+
+    if (cycle)
+    {
+        // for (int i = 1; i <= nodes; i++)
+        // cout << i << "->" << parent[i] << endl;
+        vector<int> path;
+        // cout << "START " << st << "End " << ed << endl;
+        int selected_node = st;
+        while (1)
+        {
+            path.push_back(selected_node);
+            if (selected_node == ed)
+            {
+                break;
+            }
+            selected_node = parent[selected_node];
+        }
+        path.push_back(st);
+
+        cout << path.size() << endl;
+
+        for (auto i : path)
+            cout << i << " ";
+        cout << endl;
+    }
+    else
+    {
+        cout << "Impossible" << endl;
+    }
+
+    return 0;
+}*/
