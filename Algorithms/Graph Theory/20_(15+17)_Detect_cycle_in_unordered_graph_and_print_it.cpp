@@ -1,5 +1,6 @@
 // /*
-
+// CSES Round Trip Problem
+// https://cses.fi/problemset/task/1669/
 // i/P :
 // 5 6
 // 1 3
@@ -34,7 +35,7 @@
 // #include <bits/stdc++.h>
 // using namespace std;
 
-// const int N = 1e5;
+// const int N = 2e5;
 
 // vector<int> adj_list[N];
 
@@ -119,7 +120,6 @@
 
 //         for (auto i : cities)
 //             cout << i << " ";
-//         cout << endl;
 //     }
 //     else
 //         cout << "IMPOSSIBLE" << endl;
@@ -131,11 +131,12 @@
 // #include <bits/stdc++.h>
 // using namespace std;
 
-// const int N = 1e5;
+// const int N = 2e5;
 
 // vector<int> adj_list[N];
 
 // int visited[N], parent[N];
+
 // int st, ed;
 
 // bool detect_cycle(int src)
@@ -149,7 +150,9 @@
 //         if (visited[i] == 0)
 //         {
 //             parent[i] = src;
+
 //             bool ok = detect_cycle(i);
+
 //             if (ok)
 //             {
 //                 return true;
@@ -220,11 +223,11 @@
 //     }
 //     else
 //     {
-//         cout << "Impossible" << endl;
+//         cout << "IMPOSSIBLE" << endl;
 //     }
 
 //     return 0;
-// }*/
+// }
 
 #include <bits/stdc++.h>
 using namespace std;
