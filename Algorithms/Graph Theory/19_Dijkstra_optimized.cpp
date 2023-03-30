@@ -1,39 +1,50 @@
-/*
-input  -> a weighter graph and a source
-output -> distance of all nodes from the source
+// input -> a weighted graph and a source
+// ouput -> distance of all nodes from the source
 
+/*
 u -> v
 
- if d[u] + c(u,v) < d[v];
-    d[v] = d[u] + c(u,v)
+if d[u] + c(u, v) < d[v]:
+    d[v] = d[u] + c(u, v)
 
-space complexity -> O(m)
-time complexity -> O(mlogn)
-
-    - create a distance array "d"
-    - initialize all values of "d" to infinity -> O(n)
-    - d[src] = 0
-    - create a visited array and mark all nodes as unvisited
-    - take an empty reverse proority_queue "pq"
-    - pq.push({ 0 , src })
-
-    - while the priority queue is not empty
-        - head_distance , head = pq.front()
-        - pq.pop() -> O(logE)
-        - if visited[head] = 1
-        - for all adj_node of head : -> O(E)
-            - if d[head] + c(head , adj_node) < d[adj_node] :
-                - d[head] + c(head, adj_node)
-                - pq.push({d[adj_ndoe], adj_node});
-    - output array "d"
-
-    O(n) + O(ElogE) + O(ElogE)
-
-    -> O(|E| log |E|)
-    -> O(|E| log |v^2|)
-    -> O(2|E| log |V|)
-    -> O (|E| log |V| )
 */
+
+// space complexity -> O(m)
+// time complexity ===> O(m log n)
+
+// - create a distance array "d"
+// - initialize all values of "d" to infinity  -> O(n)
+// - d[src] = 0
+// - create a visited array and mark all nodes as unvisited -> O(n)
+// - take an empty reverse priority_queue "pq"
+// - pq.push({0, src})
+
+// - while the priority_queue is not empty: -> O(E)
+//     - head_distance, head = pq.front()
+//     - pq.pop() -> O(log E)
+//     - if visited[head] == 1: ignore
+//     - visited[head] = 1
+//     - for all adj_node of head: -> O(E)
+//         - if d[head] + c(head, adj_node) < d[adj_node]:
+//             - d[adj_node] = d[head] + c(head, adj_node)
+//             - pq.push({ d[adj_node], adj_node }); -> O(log E)
+
+// - ouput array "d"
+
+//  O(n) + O(E log E) + O(E log E)
+//  -> O(|E| log |E|)
+//  -> O(|E| log |V^2|)
+//  -> O(2|E| log |V|)
+//  -> O(|E| log |V|)   [base 2]
+
+// https://codeforces.com/problemset/problem/20/C
+// n -> 10^5
+// m -> 10^5
+
+// max_w -> 10^6
+
+// 10^6 * 10^5 -> 10^11
+// O(ElogV)
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -56,15 +67,14 @@ void dijkstra(int src)
     }
     d[src] = 0;
 
-    priority_queue<pair<int, int>> pq;
-
+    priority_queue<pair<long long, int>> pq;
     pq.push({0, src});
 
     while (!pq.empty())
     {
+
         pair<long long, int> head = pq.top();
         pq.pop();
-
         int selected_node = head.second;
 
         if (visited[selected_node])
@@ -73,6 +83,7 @@ void dijkstra(int src)
         }
 
         visited[selected_node] = 1;
+
         for (auto adj_entry : adj_list[selected_node])
         {
             int adj_node = adj_entry.first;
@@ -90,13 +101,13 @@ void dijkstra(int src)
 
 int main()
 {
+
     cin >> nodes >> edges;
 
     for (int i = 0; i < edges; i++)
     {
         int u, v, w;
         cin >> u >> v >> w;
-
         adj_list[u].push_back({v, w});
         adj_list[v].push_back({u, w});
     }
@@ -117,15 +128,17 @@ int main()
     {
         path.push_back(current_node);
         if (current_node == src)
+        {
             break;
+        }
         current_node = parent[current_node];
     }
-
     reverse(path.begin(), path.end());
 
-    for (auto node : path)
+    for (int node : path)
+    {
         cout << node << " ";
+    }
     cout << endl;
-
-    return 0;
 }
+
