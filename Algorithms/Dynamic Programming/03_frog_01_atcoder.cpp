@@ -71,7 +71,7 @@ int dp[N];
 
 int stone(int n)
 {
-    // 1. base case
+    // 1. base case  ( ১ থেকে ১ এ আসার কস্ট ০ , ১ বেজড ইনডেক্স )
     if (n == 1)
     {
         return 0;
@@ -85,9 +85,10 @@ int stone(int n)
 
     // 3. calculate answer from subproblems
     int ans1 = stone(n - 1) + abs(h[n] - h[n - 1]);
+    // stone(n-1) হল খালি স্টেপ এর জন্য , আর তার সাথে কস্ট যোগ করে দিতেছি ।
 
     // corner case
-    if (n == 2)
+    if (n == 2) // কারণ ২ এর জন্য h[2-2] , ০ , ১ বেজ ইন্ডেক্সিং এ অভারফ্লো করে ।
     {
         dp[n] = ans1;
         return ans1;
