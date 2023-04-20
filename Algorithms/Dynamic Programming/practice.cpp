@@ -1,20 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 1e5;
-int dp[N];
-
-// 01 . Define state
-int trib(int n)
+int f(int n, int a[], int dp[], int k)
 {
-    if (n <= 3)
-        return 1;
-
+    if (n == 0)
+        return 0;
     if (dp[n] != -1)
         return dp[n];
+    int minStep = INT_MAX;
 
-    // 02. Recur. Eqn for sub problems
-    return dp[n] = trib(n - 1) + trib(n - 2) + trib(n - 3);
+    for (int j = 1; j <= k; j++)
+    {
+        if (n - j >= 0)
+        {
+            int jmp = f(n - j, a, dp, k) + abs(a[n] - a[n - j]);
+            minStep = min(minStep, jmp);
+        }
+    }
+    return dp[n] = minStep;
 }
 
 int main()
@@ -22,8 +25,19 @@ int main()
     int n;
     cin >> n;
 
-    memset(dp, -1, sizeof(dp));
+    int k;
+    cin >> k;
 
-    cout << trib(n) << endl;
+    int a[n];
+    int dp[n];
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        dp[i] = -1;
+    }
+
+    cout << f(n - 1, a, dp, k) << endl;
+
     return 0;
 }
