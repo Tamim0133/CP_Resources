@@ -1,43 +1,41 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
-int f(int n, int a[], int dp[], int k)
+long long solveUtil(long long ind, vector<long long> &arr, vector<long long> &dp)
 {
-    if (n == 0)
-        return 0;
-    if (dp[n] != -1)
-        return dp[n];
-    int minStep = INT_MAX;
 
-    for (int j = 1; j <= k; j++)
-    {
-        if (n - j >= 0)
-        {
-            int jmp = f(n - j, a, dp, k) + abs(a[n] - a[n - j]);
-            minStep = min(minStep, jmp);
-        }
-    }
-    return dp[n] = minStep;
+    if (dp[ind] != -1)
+        return dp[ind];
+
+    if (ind == 1)
+        return arr[ind];
+    if (ind <= 0)
+        return 0;
+
+    long long pick = arr[ind] * ind + solveUtil(ind - 2, arr, dp);
+    long long nonPick = 0 + solveUtil(ind - 1, arr, dp);
+
+    return dp[ind] = max(pick, nonPick);
+}
+
+long long solve(long long n, long long k, vector<long long> &arr)
+{
+    vector<long long> dp(k + 3, -1);
+    return solveUtil(k, arr, dp);
 }
 
 int main()
 {
-    int n;
+    long long n;
     cin >> n;
-
-    int k;
-    cin >> k;
-
-    int a[n];
-    int dp[n];
-
-    for (int i = 0; i < n; i++)
+    vector<long long> arr(1e5 + 5, 0);
+    long long k = INT_MIN, x;
+    for (long long i = 0; i < n; i++)
     {
-        cin >> a[i];
-        dp[i] = -1;
+        cin >> x;
+        k = max(k, x);
+        arr[x]++;
     }
-
-    cout << f(n - 1, a, dp, k) << endl;
-
-    return 0;
+    cout << solve(n, k, arr) << endl;
 }
