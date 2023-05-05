@@ -1,41 +1,52 @@
-// https://takeuforward.org/data-structure/grid-unique-paths-2-dp-9/
-
+// https://cses.fi/problemset/result/6009990/
 #include <bits/stdc++.h>
-
 using namespace std;
 
-int mazeObstaclesUtil(int i, int j, vector<vector<int>> &maze, vector<vector<int>> &dp)
+long long mod = 1e9 + 7;
+
+int f(int i, int j, vector<vector<int>> &dp, vector<vector<int>> &a)
 {
-    if (i > 0 && j > 0 && maze[i][j] == -1)
+    if (i < 0 or j < 0)
         return 0;
-    if (i == 0 && j == 0)
+    if (a[i][j] == -1)
+        return 0;
+    if (i == 0 and j == 0)
         return 1;
-    if (i < 0 || j < 0)
-        return 0;
+
     if (dp[i][j] != -1)
         return dp[i][j];
 
-    int up = mazeObstaclesUtil(i - 1, j, maze, dp);
-    int left = mazeObstaclesUtil(i, j - 1, maze, dp);
+    int up = f(i - 1, j, dp, a);
+    int left = f(i, j - 1, dp, a);
 
-    return dp[i][j] = up + left;
-}
-
-int mazeObstacles(int n, int m, vector<vector<int>> &maze)
-{
-    vector<vector<int>> dp(n, vector<int>(m, -1));
-    return mazeObstaclesUtil(n - 1, m - 1, maze, dp);
+    return dp[i][j] = (up + left) % mod;
 }
 
 int main()
 {
+    int h, w;
 
-    vector<vector<int>> maze{{0, 0, 0},
-                             {0, -1, 0},
-                             {0, 0, 0}};
+    int n;
+    cin >> n;
 
-    int n = maze.size();
-    int m = maze[0].size();
+    h = w = n;
 
-    cout << mazeObstacles(n, m, maze);
+    vector<vector<int>> a(h, vector<int>(w, 0));
+    char c;
+
+    for (int i = 0; i < h; i++)
+    {
+        for (int j = 0; j < w; j++)
+        {
+            cin >> c;
+            if (c == '*')
+                a[i][j] = -1;
+        }
+    }
+
+    vector<vector<int>> dp(h, vector<int>(w, -1));
+
+    cout << f(h - 1, w - 1, dp, a) << endl;
+
+    return 0;
 }
