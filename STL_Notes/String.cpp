@@ -136,6 +136,9 @@ int main()
         cout << s[i]; /// ads
     cout << endl;
 
+    // Making Unique
+    s.erase(unique(s.begin(), s.end()), s.end());
+
     /*-------------------------------------------------------------------
                08 : Finding Maximum , Minimum
 --------------------------------------------------------*/

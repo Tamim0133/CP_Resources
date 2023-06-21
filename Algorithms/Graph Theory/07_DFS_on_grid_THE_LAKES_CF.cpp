@@ -25,6 +25,7 @@ int dy[] = {1, -1, 0, 0};
 int dfs(int x, int y)
 {
     vis[x][y] = true;
+
     int ans = a[x][y];
 
     for (int i = 0; i < 4; i++)
