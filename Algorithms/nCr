@@ -277,9 +277,9 @@ bool sortd(const pair<int, int> &a, const pair<int, int> &b) { return (a.second 
 ---------------------------------------------------------------------------*/
 vll fact(2e5 + 10, 1);
 
-ll inv(ll a, ll m)
+ll inv(ll a)
 {
-    return a <= 1 ? a : m - (long long)(m / a) * inv(m % a, m) % m;
+    return powermod(a, mod - 2, mod);
 }
 int nCr(int n, int r)
 {
