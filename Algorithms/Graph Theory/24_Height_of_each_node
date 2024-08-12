@@ -1,0 +1,20 @@
+vector<int> gone(2e5 + 10, 0);
+vector<vector<int>> adj(2e5 + 10);
+int height = 0;
+void dfs(int loc, int h) {
+  gone[loc] = true;
+  height = max(height, h);
+  h++;
+  for (auto x : adj[loc])
+    if (!gone[x]) dfs(x, h);
+}
+
+
+ int h = 0;
+    for (int i = 1; i <= node; i++) {
+      height = 0;
+      for (int i = 0; i <= node; i++) gone[i] = 0;
+      dfs(i, 0);
+      h = max(h, height);
+      cout << i << " " << height << endl;
+    }
